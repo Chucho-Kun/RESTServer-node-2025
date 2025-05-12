@@ -4,7 +4,17 @@ export class Server {
         constructor(){
             this.app = express();
             this.port = process.env.PORT;
+
+            //Middlewares
+            this.middlewares();
+
+            // Rutas de la aplicación
             this.routes();
+        }
+        middlewares(){
+
+            this.app.use( express.static('public') );
+
         }
         routes(){
             this.app.get('/', (req, res) => {
@@ -17,6 +27,3 @@ export class Server {
             });
         }
 }
-
-
-//module.exports = Server;
