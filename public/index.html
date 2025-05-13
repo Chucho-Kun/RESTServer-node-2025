@@ -1,13 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso Denegado</title>
+    <title>REST Server</title>
+    <style>
+        h1{font-family: 'Arial';}
+        body{font-family: 'Arial',sans-serif;}
+        table{font-weight: bold;}
+        .contenedor{text-align: center;margin-top: 30px;}
+        .tabla{max-width: 600px;display: inline-table;}
+        .code{background-color: #efefef;padding: 10px;color: gray;text-align: left;}
+        .present{max-width: 800px;display: inline-block;}
+    </style>
 </head>
 <body>
 
-    <h1>Acceso Denegado</h1>
+    <div style="text-align: center;">
+        <div class="present">
+            <h1>Ejemplo de Peticiones</h1>
+            <h3 style="text-align: left;">para POST MAN</h3>
+        </div>
+    
+    </div>
+    <hr>
+
+    <div class="contenedor">
+        <table class="tabla" border="0">
+            <tr>
+                <td>PETICION</td><td>EJEMPLO</td>
+            </tr>
+            <tr>
+                <td>GET</td><td>
+                    <p class="code">
+                        curl --location --request GET 'api/usuarios?q=hola&nombre=chucho-kun&api=234234234234%0A%0A' \
+                        --header 'Content-Type: application/json' \
+                        --data '{
+                            "nombre" : "jesus",
+                            "edad" : "45"
+                        }'
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>POST</td><td>
+                    <p class="code">
+                        curl --location --request PUT 'api/usuarios' \
+                        --header 'Content-Type: application/json' \
+                        --data '{
+                            "nombre" : "jesus",
+                            "edad" : "45"
+                        }'
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>PUT</td><td>
+                    <p class="code">
+                        curl --location --request PUT 'api/usuarios/10' \
+                        --data ''
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>DELETE</td><td>
+                    <p class="code">
+                        curl --location --request DELETE 'api/usuarios' \
+                        --data ''
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
 
 </body>
 </html>

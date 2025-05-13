@@ -20,6 +20,7 @@ export const usuariosGet = (req, res = response ) => {
         n:nombre,
         e:edad
     })
+    res.send('hola');
   }
 
   export const usuariosPut = (req, res = response ) => {
