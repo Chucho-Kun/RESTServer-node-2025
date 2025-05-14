@@ -1,4 +1,5 @@
 import { response } from 'express';
+import Usuario from '../models/usuario.js'
 
 export const usuariosGet = (req, res = response ) => {
 
@@ -11,15 +12,17 @@ export const usuariosGet = (req, res = response ) => {
     })
   }
 
-  export const usuariosPost = (req, res = response ) => {
+  export const usuariosPost = async (req, res = response ) => {
 
     //const { nombre , edad } = req.body;
-    
+    const body = req.body;
+    const usuario = new Usuario( body );
+
+    await usuario.save();
 
     res.json({
         msn:'metodo POST - controlador',
-        n:nombre,
-        e:edad
+        usuario
     })
     res.send('hola');
   }
