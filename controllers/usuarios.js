@@ -13,7 +13,8 @@ export const usuariosGet = (req, res = response ) => {
 
   export const usuariosPost = (req, res = response ) => {
 
-    const { nombre , edad } = req.body;
+    //const { nombre , edad } = req.body;
+    
 
     res.json({
         msn:'metodo POST - controlador',
