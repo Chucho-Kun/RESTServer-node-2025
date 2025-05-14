@@ -1,4 +1,4 @@
-# Webserver - REST Server
+# REST Server + MongoDB
 
 ```
 npm install
