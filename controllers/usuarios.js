@@ -18,6 +18,12 @@ export const usuariosGet = (req, res = response ) => {
     const { nombre , correo , password , rol } = req.body;
     const usuario = new Usuario( {nombre , correo , password , rol} );
     //validar correo
+    const existeEmail = await Usuario.findOne({ correo });
+    if( existeEmail ){
+      return res.status(400).json({
+        msn:'El correo ya está registrado'
+      });
+    }
 
     //encriptar contraseña
     const salt = bcryptjs.genSaltSync();
