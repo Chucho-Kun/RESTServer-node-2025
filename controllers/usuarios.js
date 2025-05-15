@@ -1,5 +1,6 @@
 import { response } from 'express';
 import Usuario from '../models/usuario.js'
+import bcryptjs from "bcryptjs";
 
 export const usuariosGet = (req, res = response ) => {
 
@@ -16,11 +17,16 @@ export const usuariosGet = (req, res = response ) => {
 
     const { nombre , correo , password , rol } = req.body;
     const usuario = new Usuario( {nombre , correo , password , rol} );
+    //validar correo
+
+    //encriptar contraseña
+    const salt = bcryptjs.genSaltSync();
+    usuario.password = bcryptjs.hashSync( password , salt );
+    //guardar en BD
 
     await usuario.save();
 
     res.json({
-        msn:'metodo POST - controlador',
         usuario
     })
     res.send('hola');
